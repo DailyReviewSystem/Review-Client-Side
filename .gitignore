@@ -105,3 +105,8 @@ dist
 
 # Editor Hidden Folder
 .idea
+
+node_modules
+.DS_Store
+dist-ssr
+*.local

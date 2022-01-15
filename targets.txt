@@ -1,0 +1,33 @@
+TEST!
+TEST!
+TEST!
+
+Client
+ Response Grid
+Dashboard
+ - How many forms need to fill-in
+
+- User Can Register
+ - Using Specific Invitation Code
+
+- User Can Fill In Form
+- User Can Modify (Today's) Submited Form
+
+Basic Information 
+ - name
+ - organization name
+
+User Can Belong To Multiple Organizations
+Organization Can Have One Maintainer
+
+Maintainer Can Issue New Form
+ - name
+ - frequency
+
+Maintainer Can add form to organization
+
+Using Schedule Work
+
+Jump Somedays's form (ask for leave, weekend)
+
+Maybe A Guide to Build Form
