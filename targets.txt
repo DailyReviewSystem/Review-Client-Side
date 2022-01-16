@@ -11,9 +11,9 @@ Dashboard
  - Using Specific Invitation Code
 
 - User Can Fill In Form
-- User Can Modify (Today's) Submited Form
+- User Can Modify (Today's) Submitted Form
 
-Basic Information 
+Basic Information
  - name
  - organization name
 
