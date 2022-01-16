@@ -6,16 +6,25 @@ main.content {
 .list-title {
   font-weight: 400;
 }
+
+.form-list li {
+  margin: .5rem 0;
+}
 </style>
 
 <template>
   <main class="content">
     <div class="content-width">
 
-      <h3 class="list-title">未填表单(2)</h3>
-      <ul>
+      <h3 class="list-title">未填表单 (2)</h3>
+
+      <ul class="form-list">
         <li>
-          <router-link to="/form/1">网站设计与开发</router-link>
+          <router-link to="/form/1">School Daily Form</router-link>
+        </li>
+
+        <li>
+          <router-link to="/form/1">My Daily Form</router-link>
         </li>
       </ul>
     </div>
