@@ -11,9 +11,9 @@ import App from './App.vue'
 import router from "./router.js";
 
 /**
- * Import LuLu UI
+ * Import Style
  */
-import "./assets/ui.css"
+import "./assets/app.scss";
 
 createApp(App)
     .use( router )
