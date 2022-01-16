@@ -11,7 +11,7 @@
 <template>
   <header class="site-header">
     <div class="content-width">
-      <span class="logo">Daily Review System</span>
+      <router-link to="/">Daily Review System</router-link>
     </div>
   </header>
 </template>
