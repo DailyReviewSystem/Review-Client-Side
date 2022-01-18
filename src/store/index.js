@@ -35,6 +35,15 @@ const store = createStore({
              * Initialization done
              */
             context.commit("finishInit");
+        },
+
+        storeToken( context, token ) {
+            /**
+             * Persistent Store
+             */
+            StoreManager.set("token", token );
+
+            context.commit("loadToken", token );
         }
     }
 });

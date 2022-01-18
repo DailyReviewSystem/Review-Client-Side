@@ -20,6 +20,6 @@ export default {
             return config;
         });
 
-        app.config.globalProperties.$api = api;
+        app.provide("api", api);
     }
 }

@@ -24,13 +24,13 @@
   <div class="content-width center">
     <form @submit.prevent="submit" class="form login-form" ref="form">
       <div class="flex align-center">
-        <label for="tel">Username</label>
-        <input type="tel" id="tel" class="ui-input" size="20" name="tel" required>
+        <label for="username">Username</label>
+        <input type="text" id="username" class="ui-input" size="20" name="username" required autocomplete="off" value="user">
       </div>
 
       <div class="flex align-center">
         <label for="password">Password</label>
-        <input type="password" id="password" class="ui-input" size="10" name="code" required>
+        <input type="password" id="password" class="ui-input" size="10" name="password" required autocomplete="off" value="password">
       </div>
 
       <div class="flex">
@@ -42,12 +42,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
+import store from "@/store/index.js";
+import { useRouter } from "vue-router";
 
-/**
- *  Form Element
-*/
+const api = inject("api");
 const form = ref(null);
+const router = useRouter();
 
 /**
  * Submit Login From
@@ -55,7 +56,16 @@ const form = ref(null);
 function submit() {
   const data = new FormData( form.value );
 
-  this.api.post("/use")
-  console.log( form.value );
+  api.post("/auth/login", data ).then( ({ data }) => {
+    let token = data?.token;
+
+    if( token ) {
+      store.dispatch("storeToken", token );
+      // alert
+      router.push("/");
+    }
+  }).catch( e => {
+    console.log( e );
+  });
 }
 </script>
