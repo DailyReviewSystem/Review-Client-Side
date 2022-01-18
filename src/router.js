@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { useStore } from "vuex";
 
 /**
  * Index Page
@@ -21,6 +20,9 @@ import login from "./views/auth/login.vue";
  */
 import store from "./store/index.js";
 
+/**
+ * Init Storage
+ */
 store.dispatch("init");
 
 const router = createRouter({
@@ -53,7 +55,16 @@ router.beforeEach( (to, from, next) => {
      * This Page Or Parent Page Needs Authentication
      */
     if( to.matched.some( route => route.meta.auth ) ) {
-
+        /**
+         * Might Logged In ( Has Token )
+         */
+        if( store.state.token ) {
+            next();
+        } else {
+            next("/login");
+        }
+    } else {
+        next();
     }
 });
 

@@ -13,7 +13,12 @@ import router from "./router.js";
 /**
  * Store Management
  */
-import index from "./store/index.js";
+import store from "./store/index.js";
+
+/**
+ * API Plugin
+ */
+import api from "./plugins/api.js";
 
 /**
  * Import Style
@@ -21,6 +26,7 @@ import index from "./store/index.js";
 import "./assets/app.scss";
 
 createApp(App)
+    .use( api )
+    .use( store )
     .use( router )
-    .use( index )
     .mount('#app')

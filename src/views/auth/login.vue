@@ -22,7 +22,7 @@
 
 <template>
   <div class="content-width center">
-    <form @submit.prevent="test" class="form login-form">
+    <form @submit.prevent="submit" class="form login-form" ref="form">
       <div class="flex align-center">
         <label for="tel">Username</label>
         <input type="tel" id="tel" class="ui-input" size="20" name="tel" required>
@@ -42,8 +42,20 @@
 </template>
 
 <script setup>
-function test() {
-  alert(1);
-}
+import { ref } from "vue";
 
+/**
+ *  Form Element
+*/
+const form = ref(null);
+
+/**
+ * Submit Login From
+ */
+function submit() {
+  const data = new FormData( form.value );
+
+  this.api.post("/use")
+  console.log( form.value );
+}
 </script>
