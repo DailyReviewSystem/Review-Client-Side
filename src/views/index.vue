@@ -7,7 +7,7 @@ main.content {
   font-weight: 400;
 }
 
-.form-list li {
+.form-list a {
   margin: .5rem 0;
 }
 </style>
@@ -18,15 +18,20 @@ main.content {
 
       <h3 class="list-title">未填表单 (2)</h3>
 
-      <ul class="form-list">
-        <li>
-          <router-link to="/form/1">School Daily Form</router-link>
-        </li>
+      <div class="flex col form-list">
+        <router-link
+            to="/form/1"
+            class="ui-button"
+            style="display: block"
+        >School Daily Form</router-link>
 
-        <li>
-          <router-link to="/form/1">My Daily Form</router-link>
-        </li>
-      </ul>
+        <router-link
+            to="/form/1"
+            class="ui-button"
+            style="display: block"
+        >School Daily Form</router-link>
+      </div>
+
     </div>
   </main>
 </template>

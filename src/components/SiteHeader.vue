@@ -6,12 +6,18 @@
   display: flex;
   align-items: center;
 }
+
+.logo {
+  border: none!important;
+  padding: .5em!important;
+  margin-left: -.5em;
+}
 </style>
 
 <template>
   <header class="site-header">
     <div class="content-width">
-      <router-link to="/">Daily Review System</router-link>
+      <router-link to="/" class="ui-button logo">Daily Review System</router-link>
     </div>
   </header>
 </template>
