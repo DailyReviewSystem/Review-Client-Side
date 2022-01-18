@@ -11,10 +11,16 @@ import App from './App.vue'
 import router from "./router.js";
 
 /**
+ * Store Management
+ */
+import index from "./store/index.js";
+
+/**
  * Import Style
  */
 import "./assets/app.scss";
 
 createApp(App)
     .use( router )
+    .use( index )
     .mount('#app')
