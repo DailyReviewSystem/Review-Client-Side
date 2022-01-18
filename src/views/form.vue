@@ -18,8 +18,8 @@
   <div class="content-width">
     <h1>School Daily Form</h1>
 
-    <form class="flex col" @submit.prevent="submitForm" ref="form">
-      <template v-for="spec in formSpec">
+    <form class="flex col" @submit.prevent="submitForm" ref="formEl">
+      <template v-for="spec in formInfo.fields">
         <div class="form-item">
           <label
               v-if="spec.type !== 'hidden' "
@@ -54,65 +54,25 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, inject } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-const formSpec = [
-  {
-    id: "date",
-    label: "日期",
-    type: "hidden",
-    value: "2021-01-16"
-  },
+const api = inject("api");
+const title = inject("title");
+const formEl = ref(null);
+const formInfo = ref({ spec: [] });
 
-  {
-    id: "week",
-    label: "星期",
-    type: "hidden",
-    value: "日"
-  },
-
-  {
-    id: "place",
-    label: "训练地点",
-    type: "text",
-    value: "123123",
-  },
-
-  {
-    id: "train-content",
-    label: "训练内容",
-    textarea: true,
-  },
-
-  {
-    id: "train-note",
-    label: "训练笔记",
-    textarea: true,
-  },
-
-  {
-    id: "train-thought",
-    label: "训练感悟",
-    textarea: true,
-  },
-
-  {
-    id: "train-conclusion",
-    label: "训练小结",
-    textarea: true,
-  },
-];
-
-console.log("ID: ", route.params.id);
-console.log( formSpec );
-
-const form = ref(null);
+api.get("/real/" + route.params.id).then( ({data}) => {
+  formInfo.value = data.data;
+  if( data?.data?.name ) title( data.data.name );
+});
 
 function submitForm() {
-  const data = new FormData( form.value );
-  // this.api.post("/");
+  const data = new FormData( formEl.value );
+  api.post("/real/fill/" + route.params.id, data ).then( ({ data }) => {
+    // Alert
+  });
 }
 </script>

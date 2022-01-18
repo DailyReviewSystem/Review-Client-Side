@@ -16,22 +16,33 @@ main.content {
   <main class="content">
     <div class="content-width">
 
-      <h3 class="list-title">未填表单 (2)</h3>
+      <h3 class="list-title">未填表单 ({{ list.length }})</h3>
 
       <div class="flex col form-list">
         <router-link
-            to="/form/1"
+            v-for="item in list"
+            :to="'/form/' + item.id"
             class="ui-button"
             style="display: block"
-        >School Daily Form</router-link>
-
-        <router-link
-            to="/form/1"
-            class="ui-button"
-            style="display: block"
-        >School Daily Form</router-link>
+        >{{ item.name }} ({{ item.date }})</router-link>
       </div>
 
     </div>
   </main>
 </template>
+
+<script setup>
+
+import {inject, ref} from "vue";
+
+let list = ref([]);
+
+const api = inject("api");
+const title = inject("title");
+
+api.get("/user/forms").then( ({data}) => {
+  list.value = data.data;
+  title(`(${ list.value.length }) 未填表单`);
+});
+
+</script>

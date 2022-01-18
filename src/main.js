@@ -16,9 +16,10 @@ import router from "./router.js";
 import store from "./store/index.js";
 
 /**
- * API Plugin
+ * Plugins
  */
 import api from "./plugins/api.js";
+import title from "./plugins/title.js";
 
 /**
  * Import Style
@@ -27,6 +28,7 @@ import "./assets/app.scss";
 
 createApp(App)
     .use( api )
+    .use( title )
     .use( store )
     .use( router )
     .mount('#app')
