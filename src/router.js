@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import TitleManger from "./plugins/title.js";
 
 /**
  * Index Page
@@ -31,13 +32,17 @@ const router = createRouter({
     routes: [
         {
             path: "/login",
-            component: login
+            component: login,
+            meta: {
+                title: "Login Page",
+            }
         },
         {
             path: "/",
             component: index,
             meta: {
                 auth: true,
+                title: "Index Page",
             }
         },
         {
@@ -45,6 +50,7 @@ const router = createRouter({
             component: form,
             meta: {
                 auth: true,
+                title: "Form Page",
             }
         }
     ]
@@ -65,6 +71,12 @@ router.beforeEach( (to, from, next) => {
         }
     } else {
         next();
+    }
+});
+
+router.afterEach((to, from) => {
+    if( to?.meta?.title ) {
+        TitleManger.title( to?.meta?.title );
     }
 });
 

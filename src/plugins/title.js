@@ -1,11 +1,9 @@
 export default {
+    title( title ) {
+        document.title = title + " - Daily Review System";
+    },
+
     install(app) {
-
-        // Set Title With Suffix
-        const title = (title) => {
-            document.title = title + " - Daily Review System";
-        };
-
-        app.provide( "title", title );
+        app.provide( "title", this.title );
     }
 }
