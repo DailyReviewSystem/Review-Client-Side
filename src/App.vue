@@ -19,4 +19,9 @@ event.on("unauth", function() {
     // Jump To Login Page
     router.push("/login");
 });
+
+/**
+ * Init Storage
+ */
+store.dispatch("init");
 </script>

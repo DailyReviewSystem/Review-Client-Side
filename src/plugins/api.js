@@ -4,8 +4,6 @@ import { event } from "./event.js";
 
 export default {
     install( app, options ) {
-        store.dispatch("init");
-
         const api = axios.create({
             baseURL: "http://localhost:8000/api"
         });

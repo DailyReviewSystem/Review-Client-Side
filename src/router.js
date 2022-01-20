@@ -21,11 +21,6 @@ import login from "./views/auth/login.vue";
  */
 import store from "./store/index.js";
 
-/**
- * Init Storage
- */
-store.dispatch("init");
-
 const router = createRouter({
     history: createWebHistory(),
 
