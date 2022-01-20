@@ -44,6 +44,15 @@ const store = createStore({
             StoreManager.set("token", token );
 
             context.commit("loadToken", token );
+        },
+
+        /**
+         * Remove Token From both persist and memory store
+         * @param context
+         */
+        removeToken( context ) {
+            StoreManager.remove("token");
+            context.commit("loadToken", null );
         }
     }
 });
